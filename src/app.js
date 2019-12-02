@@ -7,7 +7,9 @@ import useSocket from './hooks/socket.js';
 import useQueue from './hooks/queue.js';
 
 // Connect outside of the render cycle ...
-const socket = io.connect('http://localhost:3002');
+
+
+const socket = io.connect(process.env.REACT_APP_IO_SERVER || 'http://localhost:3002');
 const queue = new Q('deeds');
 Q.publish('deeds', 'work', '');
 
